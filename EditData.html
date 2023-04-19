@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="saveTolocalStorage(event)">
+        <label>Name</label>
+        <input type="text" name="username"  required />
+        <label>EmailId</label>
+        <input type="email" name="email" required />
+        <label>PhoneNumber</label>
+        <input type="tel" name="phonenumber" />
+        <button>Submit</button>
+        <button type="text" name Delete_data> Delete</button>
+    </form>
+
+    <script>
+        function saveToLocalStorage(event) {
+            event.preventDefault();
+            const name= event.target.username.value;
+            const email= event.target.emailId.value;
+            const phonenumber= event.target.phonenumber.value;
+            //localStorage.setItem('name', name);//
+          //  localStorage.setItem( 'email', email);//
+           // localStorage.setItem('phonenumber', phonenumber);//
+
+            const obj= {
+                name,
+                email,
+                phonenumber
+            }
+           
+            constEditButton=document.createElement('input')
+            editButton.type= 'button'
+            editbutton.value= 'edit'
+            editButton.onClick=() =>{
+                localStorage.ditItem(obj.email)
+                parentEle.editChild(childEle)
+
+                childEle.appendChild(editButton)
+                parentEle.appendChild(childEle)
+            }
+        }
+    </script>
+</body>
+</html>
