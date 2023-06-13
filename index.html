@@ -16,6 +16,7 @@
         <input type="tel" name="phonenumber" />
         <button>Submit</button>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
     <script>
         function saveToLocalStorage(event) {
@@ -32,8 +33,45 @@
                 email,
                 phonenumber
             }
-            localStorage.setItem('userDetails', JSON.stringify);
+            axios.post('https://crudcrud.com/api/04eda8770ae645ed8a2a059810e310e7/appointmentdata
+', objectToStore)
+  .then(response => {
+    console.log('Object stored successfully:', response.data);
+  })
+  .catch(error => {
+    console.error('Error storing object:', error);
+  });
+
+           // localStorage.setItem('userDetails', JSON.stringify);
         }
+
     </script>
+    function getUserDetails() {
+  const endpoint = https://crudcrud.com/api/04eda8770ae645ed8a2a059810e310e7/appointmentdata
+; 
+
+  axios.get(endpoint)
+    .then(response => {
+      const userDetails = response.data;
+      displayUserDetails(userDetails);
+    })
+    .catch(error => {
+      console.error('Error retrieving user details:', error);
+    });
+}
+function displayUserDetails(userDetails) {
+  const userContainer = document.getElementById('user-container'); 
+
+  userDetails.forEach(user => {
+    const userElement = document.createElement('div');
+    userElement.innerHTML = `
+      <p>Name: ${user.name}</p>
+      <p>Age: ${user.age}</p>
+      <p>Email: ${user.email}</p>
+    `;
+
+    userContainer.appendChild(userElement);
+  });
+}
 </body>
 </html>
