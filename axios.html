@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <title>Axios Crash Course</title>
-  </head>
-  <body>
-    <div class="container my-5">
-      <div class="text-center">
-        <h1 class="display-4 text-center mb-3">Axios Crash Course</h1>
-        <button class="btn btn-primary my-3" id="get">GET</button>
-        <button class="btn btn-info" id="post">POST</button>
-        <button class="btn btn-warning" id="update">PUT/PATCH</button>
-        <button class="btn btn-danger" id="delete">DELETE</button>
-        <button class="btn btn-secondary" id="sim">Sim Requests</button>
-        <button class="btn btn-secondary" id="headers">
-          Custom Headers
-        </button>
-        <button class="btn btn-secondary" id="transform">
-          Transform
-        </button>
-        <button class="btn btn-secondary" id="error">
-          Error Handling
-        </button>
-        <button class="btn btn-secondary" id="cancel">
-          Cancel
-        </button>
-      </div>
-      <hr />
-      <div id="res"></div>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="saveTolocalStorage(event)">
+        <label>Name</label>
+        <input type="text" name="username"  required />
+        <label>EmailId</label>
+        <input type="email" name="email" required />
+        <label>PhoneNumber</label>
+        <input type="tel" name="phonenumber" />
+        <button>Submit</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+    <script>
+        function saveToLocalStorage(event) {
+            event.preventDefault();
+            const name= event.target.username.value;
+            const email= event.target.emailId.value;
+            const phonenumber= event.target.phonenumber.value;
+            localStorage.setItem('name', name);
+            localStorage.setItem( 'email', email);
+            localStorage.setItem('phonenumber', phonenumber);
+
+            const obj= {
+                name,
+                email,
+                phonenumber
+            }
+            axios.post('https://crudcrud.com/api/04eda8770ae645ed8a2a059810e310e7/appointmentdata
+', objectToStore)
+  .then(response => {
+    console.log('Object stored successfully:', response.data);
+  })
+  .catch(error => {
+    console.error('Error storing object:', error);
+  });
+
+           // localStorage.setItem('userDetails', JSON.stringify);
+        }
+    </script>
+</body>
 </html>
