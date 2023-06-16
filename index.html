@@ -1,77 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Candy Shop Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form onsubmit="saveTolocalStorage(event)">
-        <label>Name</label>
-        <input type="text" name="username"  required />
-        <label>EmailId</label>
-        <input type="email" name="email" required />
-        <label>PhoneNumber</label>
-        <input type="tel" name="phonenumber" />
-        <button>Submit</button>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <h1>Candy Shop Dashboard</h1>
 
-    <script>
-        function saveToLocalStorage(event) {
-            event.preventDefault();
-            const name= event.target.username.value;
-            const email= event.target.emailId.value;
-            const phonenumber= event.target.phonenumber.value;
-            localStorage.setItem('name', name);
-            localStorage.setItem( 'email', email);
-            localStorage.setItem('phonenumber', phonenumber);
+  <!-- Candy Form -->
+  <h2>Add New Candy</h2>
+  <form id="candyForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br>
+    <label for="price">Price:</label>
+    <input type="number" id="price" required><br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" required><br>
+    <button type="submit">Add Candy</button>
+  </form>
 
-            const obj= {
-                name,
-                email,
-                phonenumber
-            }
-            axios.post('https://crudcrud.com/api/04eda8770ae645ed8a2a059810e310e7/appointmentdata
-', objectToStore)
-  .then(response => {
-    console.log('Object stored successfully:', response.data);
-  })
-  .catch(error => {
-    console.error('Error storing object:', error);
-  });
+  <!-- Candy Table -->
+  <h2>Candy Inventory</h2>
+  <table id="candyTable">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </table>
 
-           // localStorage.setItem('userDetails', JSON.stringify);
-        }
+  <!-- Candy Purchase -->
+  <h2>Purchase Candy</h2>
+  <form id="purchaseForm">
+    <label for="candySelect">Select Candy:</label>
+    <select id="candySelect" required></select><br>
+    <label for="quantityToBuy">Quantity to Buy:</label>
 
-    </script>
-    function getUserDetails() {
-  const endpoint = https://crudcrud.com/api/04eda8770ae645ed8a2a059810e310e7/appointmentdata
-; 
+    <br>
 
-  axios.get(endpoint)
-    .then(response => {
-      const userDetails = response.data;
-      displayUserDetails(userDetails);
-    })
-    .catch(error => {
-      console.error('Error retrieving user details:', error);
-    });
-}
-function displayUserDetails(userDetails) {
-  const userContainer = document.getElementById('user-container'); 
+    
+    <input type="number" id="quantityToBuy" required><br>
+    <button type="submit">Buy</button>
+  </form>
 
-  userDetails.forEach(user => {
-    const userElement = document.createElement('div');
-    userElement.innerHTML = `
-      <p>Name: ${user.name}</p>
-      <p>Age: ${user.age}</p>
-      <p>Email: ${user.email}</p>
-    `;
-
-    userContainer.appendChild(userElement);
-  });
-}
+  <script src="script.js"></script>
 </body>
 </html>
